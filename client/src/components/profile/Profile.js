@@ -33,8 +33,8 @@ class Profile extends Component {
         <div>
           <div className="row">
             <div className="col-md-6">
-              <Link to="/profiles" className="btn btn-light mb-3 float-left">
-                Back to Profiles
+              <Link to="/tutors" className="btn btn-light mb-3 float-left">
+                Back to Tutors
               </Link>
             </div>
             <div className="col-md-6" />
@@ -45,9 +45,9 @@ class Profile extends Component {
             education={profile.education}
             experience={profile.experience}
           />
-          {profile.githubusername ? (
+          {/*profile.githubusername ? (
             <ProfileGithub username={profile.githubusername} />
-          ) : null}
+          ) : null*/}
         </div>
       );
     }
