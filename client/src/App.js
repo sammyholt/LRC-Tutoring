@@ -25,6 +25,7 @@ import Profile from './components/profile/Profile';
 import NotFound from './components/not-found/NotFound';
 import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
+import AddSession from './components/add-session/AddSession';
 
 import './App.css';
 
@@ -90,6 +91,13 @@ class App extends Component {
                   exact
                   path="/add-experience"
                   component={AddExperience}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/add-session/:tutorHandle"
+                  component={AddSession}
                 />
               </Switch>
               <Switch>

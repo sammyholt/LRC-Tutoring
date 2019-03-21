@@ -59,10 +59,35 @@ router.post(
       class: req.body.class,
       information: req.body.information,
       type: req.body.type,
+      scheduledStart: req.body.scheduledStart,
       createdBy: req.user.id
     });
 
-    newSession.save().then(session => res.json(session));
+    newSession.save().then(session => {
+      Profile.findOne({ handle: req.body.handle })
+        .then(profile => {
+          if (
+            session.instructors.filter(
+              instructor =>
+                instructor.user.toString() === profile.user.toString()
+            ).length > 0
+          ) {
+            return res
+              .status(400)
+              .json({ alreadyadded: 'Instructor already attending session' });
+          }
+
+          // Add user id to sessions array
+          session.instructors.unshift({ user: profile.user });
+
+          session.save().then(session => res.json(session));
+        })
+        .catch(err =>
+          res.status(404).json({ tutornotfound: 'Tutor was not found' })
+        );
+    });
+
+    //newSession.save().then(session => res.json(session));
   }
 );
 

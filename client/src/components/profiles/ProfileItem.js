@@ -26,9 +26,19 @@ class ProfileItem extends Component {
                 <span>{profile.location}</span>
               )}
             </p>
-            <Link to={`/profile/${profile.handle}`} className="btn btn-info">
-              View Profile
-            </Link>
+            <p>
+              <Link to={`/profile/${profile.handle}`} className="btn btn-info">
+                View Profile
+              </Link>
+            </p>
+            <p>
+              <Link
+                to={`/add-session/${profile.handle}`}
+                className="btn btn-success"
+              >
+                Schedule a Session
+              </Link>
+            </p>
           </div>
           <div className="col-md-4 d-none d-md-block">
             <h4>Subjects</h4>
